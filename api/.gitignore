@@ -1,2 +1,8 @@
 node_modules
 idea
+public/uploads/*
+!public/uploads/.gitkeep
+!public/uploads/Long_island_iced_tea-1-4s.jpgg
+!public/uploads/Select_Spritz.jpg
+!public/uploads/best-mojito-recipe-2.jpg
+!public/uploads/best-margarita-recipe-5.jpg

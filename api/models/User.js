@@ -7,8 +7,7 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
     facebookId: String,
     avatar: {
-        type: String,
-        required: true
+        type: String
     },
     displayName: {
         type: String,

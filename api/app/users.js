@@ -11,7 +11,7 @@ const router = express.Router();
 const downloadFile = async (url, path, filename) => {
     try {
         fetch(url).then(response => {
-            console.log(response);
+            filename =
             response.body.pipe(fs.createWriteStream(`${path}/${filename}.jpg`));
         })
     } catch (err) {
@@ -65,7 +65,7 @@ router.post('/facebookLogin', async (req, res, next) => {
                 password: nanoid(),
                 facebookId: req.body.id,
                 displayName: req.body.name,
-                avatar: name
+                avatar: `${name}.jpg`
             });
         }
 
