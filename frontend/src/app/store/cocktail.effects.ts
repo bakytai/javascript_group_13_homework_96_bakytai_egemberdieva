@@ -61,7 +61,7 @@ export class CocktailEffects {
       map(() => createCocktailSuccess()),
       tap(() => {
         void this.router.navigate(['/']);
-        this.helpers.openSnackbar('Cocktail saved!');
+        this.helpers.openSnackbar('your cocktail is being reviewed by a moderator');
       }),
       catchError(() => of(createCocktailFailure({error: 'Wrong Data'})))
     ))

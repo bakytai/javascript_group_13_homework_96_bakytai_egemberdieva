@@ -23,7 +23,7 @@ export class CocktailsService {
   };
 
   getUserCocktails() {
-    return this.http.get<ApiCocktailData[]>(environment.apiUrl + '/myCocktails').pipe(
+    return this.http.get<ApiCocktailData[]>(environment.apiUrl + '/cocktails/myCocktails').pipe(
       map(response => {
         return response.map(data => {
           return new Cocktail(data._id, data.user, data.title, data.image,
