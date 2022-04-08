@@ -5,12 +5,17 @@ import { UsersCocktailsComponent } from './users-cocktails/users-cocktails.compo
 import { NewRecipeComponent } from './new-recipe/new-recipe.component';
 import { CocktailInfoComponent } from './cocktail-info/cocktail-info.component';
 import { CocktailsComponent } from './cocktails/cocktails.component';
+import { RoleGuardService } from './services/role-guard.service';
 
 const routes: Routes = [
   {path: '', component: CocktailsComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'myCocktails', component: UsersCocktailsComponent},
-  {path: 'new/recipe', component: NewRecipeComponent},
+  {path: 'myCocktails', component: UsersCocktailsComponent,
+    canActivate: [RoleGuardService],
+    data: {roles: ['admin', 'user']}},
+  {path: 'new/recipe', component: NewRecipeComponent,
+    canActivate: [RoleGuardService],
+    data: {roles: ['admin', 'user']}},
   {path: 'cocktail/:id', component: CocktailInfoComponent},
 ];
 

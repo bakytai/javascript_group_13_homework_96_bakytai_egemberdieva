@@ -23,7 +23,7 @@ export const initialState: CocktailState = {
   changError: null
 };
 
-export const albumsReducer = createReducer(
+export const cocktailReducer = createReducer(
   initialState,
   on(fetchCocktailRequest, state => ({...state, fetchLoading: true})),
   on(fetchCocktailSuccess, (state, {cocktails}) => ({...state, fetchLoading: false, cocktails})),

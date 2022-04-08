@@ -18,7 +18,7 @@ import { AppState } from './types';
 
 @Injectable()
 
-export class AlbumsEffects {
+export class CocktailEffects {
   fetchCocktails = createEffect(() => this.actions.pipe(
     ofType(fetchCocktailRequest),
     mergeMap(() => this.cocktailService.getCocktails().pipe(

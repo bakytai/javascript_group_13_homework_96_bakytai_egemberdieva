@@ -13,7 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MatMenuModule } from '@angular/material/menu';
 import { LoginComponent } from './login/login.component';
@@ -26,6 +26,22 @@ import { CocktailInfoComponent } from './cocktail-info/cocktail-info.component';
 import { UsersCocktailsComponent } from './users-cocktails/users-cocktails.component';
 import { NewRecipeComponent } from './new-recipe/new-recipe.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { AuthInterceptor } from './auth.interceptor';
+import { AppStoreModule } from './app-store.module';
+import { FacebookLoginProvider, SocialAuthServiceConfig } from 'angularx-social-login';
+import { environment } from '../environments/environment';
+
+const socialConfig: SocialAuthServiceConfig = {
+  autoLogin: false,
+  providers: [
+    {
+      id: FacebookLoginProvider.PROVIDER_ID,
+      provider: new FacebookLoginProvider(environment.fbAppId, {
+        scope: 'email,public_profile'
+      })
+    }
+  ]
+}
 
 @NgModule({
   declarations: [
@@ -56,9 +72,13 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatFormFieldModule,
     MatInputModule,
     FlexLayoutModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    AppStoreModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    {provide: 'SocialAuthServiceConfig', useValue: socialConfig }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
