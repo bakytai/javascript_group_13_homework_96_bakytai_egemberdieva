@@ -22,7 +22,18 @@ export const fetchCocktailInfoSuccess = createAction(
 export const fetchCocktailInfoFailure = createAction(
   '[Cocktail] Fetch Failure',
   props<{error: string}>()
-)
+);
+
+export const fetchUserCocktailRequest = createAction('[Cocktail User] Fetch Request'
+);
+export const fetchUserCocktailSuccess = createAction(
+  '[Cocktail User] Fetch Success',
+  props<{cocktails: Cocktail[]}>()
+);
+export const fetchUserCocktailFailure = createAction(
+  '[Cocktail User] Fetch Failure',
+  props<{error: string}>()
+);
 
 export const createCocktailRequest = createAction(
   '[Cocktail] Create Request',

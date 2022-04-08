@@ -8,10 +8,22 @@ import { Store } from '@ngrx/store';
 
 import {
   createCocktailFailure,
-  createCocktailRequest, createCocktailSuccess, deleteCocktailFailure, deleteCocktailRequest, deleteCocktailSuccess,
-  fetchCocktailFailure, fetchCocktailInfoFailure, fetchCocktailInfoRequest, fetchCocktailInfoSuccess,
+  createCocktailRequest,
+  createCocktailSuccess,
+  deleteCocktailFailure,
+  deleteCocktailRequest,
+  deleteCocktailSuccess,
+  fetchCocktailFailure,
+  fetchCocktailInfoFailure,
+  fetchCocktailInfoRequest,
+  fetchCocktailInfoSuccess,
   fetchCocktailRequest,
-  fetchCocktailSuccess, publishCocktailFailure, publishCocktailRequest, publishCocktailSuccess
+  fetchCocktailSuccess, fetchUserCocktailFailure,
+  fetchUserCocktailRequest,
+  fetchUserCocktailSuccess,
+  publishCocktailFailure,
+  publishCocktailRequest,
+  publishCocktailSuccess
 } from './cocktail.actions';
 import { CocktailsService } from '../services/cocktails.service';
 import { AppState } from './types';
@@ -24,6 +36,14 @@ export class CocktailEffects {
     mergeMap(() => this.cocktailService.getCocktails().pipe(
       map(cocktails => fetchCocktailSuccess({cocktails})),
       catchError(() => of(fetchCocktailFailure({error: 'Something went wrong'})))
+    ))
+  ));
+
+  fetchUserCocktails = createEffect(() => this.actions.pipe(
+    ofType(fetchUserCocktailRequest),
+    mergeMap(() => this.cocktailService.getUserCocktails().pipe(
+      map(cocktails => fetchUserCocktailSuccess({cocktails})),
+      catchError(() => of(fetchUserCocktailFailure({error: 'Something went wrong'})))
     ))
   ));
 

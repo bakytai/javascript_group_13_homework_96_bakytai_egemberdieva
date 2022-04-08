@@ -1,13 +1,24 @@
 import { createReducer, on } from '@ngrx/store';
 import { CocktailState } from './types';
 import {
-  createCocktailFailure, createCocktailRequest, createCocktailSuccess,
-  deleteCocktailFailure, deleteCocktailRequest,
+  createCocktailFailure,
+  createCocktailRequest,
+  createCocktailSuccess,
+  deleteCocktailFailure,
+  deleteCocktailRequest,
   deleteCocktailSuccess,
-  fetchCocktailFailure, fetchCocktailInfoFailure, fetchCocktailInfoRequest, fetchCocktailInfoSuccess,
+  fetchCocktailFailure,
+  fetchCocktailInfoFailure,
+  fetchCocktailInfoRequest,
+  fetchCocktailInfoSuccess,
   fetchCocktailRequest,
-  fetchCocktailSuccess, publishCocktailFailure,
-  publishCocktailRequest, publishCocktailSuccess
+  fetchCocktailSuccess,
+  fetchUserCocktailFailure,
+  fetchUserCocktailRequest,
+  fetchUserCocktailSuccess,
+  publishCocktailFailure,
+  publishCocktailRequest,
+  publishCocktailSuccess
 } from './cocktail.actions';
 
 export const initialState: CocktailState = {
@@ -36,6 +47,14 @@ export const cocktailReducer = createReducer(
   on(fetchCocktailInfoRequest, state => ({...state, fetchLoading: true})),
   on(fetchCocktailInfoSuccess, (state, {cocktail}) => ({...state, fetchLoading: false, cocktail})),
   on(fetchCocktailInfoFailure, (state, {error}) => ({
+    ...state,
+    fetchLoading: false,
+    fetchError: error
+  })),
+
+  on(fetchUserCocktailRequest, state => ({...state, fetchLoading: true})),
+  on(fetchUserCocktailSuccess, (state, {cocktails}) => ({...state, fetchLoading: false, cocktails})),
+  on(fetchUserCocktailFailure, (state, {error}) => ({
     ...state,
     fetchLoading: false,
     fetchError: error
