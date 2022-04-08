@@ -21,12 +21,20 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { CocktailsComponent } from './cocktails/cocktails.component';
+import { CocktailInfoComponent } from './cocktail-info/cocktail-info.component';
+import { UsersCocktailsComponent } from './users-cocktails/users-cocktails.component';
+import { NewRecipeComponent } from './new-recipe/new-recipe.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
-    LoginComponent
+    LoginComponent,
+    CocktailsComponent,
+    CocktailInfoComponent,
+    UsersCocktailsComponent,
+    NewRecipeComponent
   ],
   imports: [
     BrowserModule,

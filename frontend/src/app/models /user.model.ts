@@ -1,6 +1,6 @@
 export interface User {
   _id: string,
-  facebookId: string,
+  facebookId: string | null,
   displayName: string,
   avatar: string,
   token: string,
