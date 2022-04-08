@@ -7,7 +7,6 @@ export class Cocktail {
     public title: string,
     public image: string,
     public recipe: string,
-
     public is_published: boolean,
     public ingredients: [{[key: string]: string}]
   ) {}
