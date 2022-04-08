@@ -23,16 +23,14 @@ export class CocktailsService {
   }
 
   getInfo(id: string) {
-    return this.http.get<ApiCocktailData[]>(environment.apiUrl + `/cocktails/${id}`).pipe(
-      map(response => {
-        return response.map(data => {
+    return this.http.get<ApiCocktailData>(environment.apiUrl + `/cocktails/${id}`).pipe(
+      map(data => {
           return new Cocktail(data._id, data.user, data.title, data.image,
-            data.recipe, data.is_published, data.ingredients
-          );
-        });
-      })
-    );
-  }
+            data.recipe, data.is_published, data.ingredients)
+        })
+    )
+  };
+
 
   createCocktail(cocktailData: CocktailData) {
     const formData = new FormData();

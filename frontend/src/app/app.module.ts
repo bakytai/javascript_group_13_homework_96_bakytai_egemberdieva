@@ -25,6 +25,7 @@ import { CocktailsComponent } from './cocktails/cocktails.component';
 import { CocktailInfoComponent } from './cocktail-info/cocktail-info.component';
 import { UsersCocktailsComponent } from './users-cocktails/users-cocktails.component';
 import { NewRecipeComponent } from './new-recipe/new-recipe.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { NewRecipeComponent } from './new-recipe/new-recipe.component';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
