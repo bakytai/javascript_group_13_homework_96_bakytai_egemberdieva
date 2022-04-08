@@ -1,5 +1,11 @@
 import { User } from './user.model';
 
+export interface Ingredients {
+  _id: string;
+  title: string;
+  amount: string;
+}
+
 export class Cocktail {
   constructor(
     public id: string,
@@ -8,7 +14,7 @@ export class Cocktail {
     public image: string,
     public recipe: string,
     public is_published: boolean,
-    public ingredients: [{[key: string]: string}]
+    public ingredients: Ingredients[]
   ) {}
 }
 
@@ -27,5 +33,5 @@ export interface ApiCocktailData {
   image: string,
   recipe: string,
   is_published: boolean,
-  ingredients: [{[key: string]: string}]
+  ingredients: Ingredients[]
 }

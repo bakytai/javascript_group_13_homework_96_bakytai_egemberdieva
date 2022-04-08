@@ -1,1 +1,17 @@
-<p>cocktail-info works!</p>
+<div style="padding: 20px">
+  <mat-card style="width: 45rem">
+    <mat-card-title-group>
+      <mat-card-title>{{ cocktail.title }}</mat-card-title>
+      <img mat-card-xl-image [src]="cocktail.image | image" [alt]="'Photo of ' + cocktail.title">
+    </mat-card-title-group>
+    <mat-card-content>
+      {{ cocktail.recipe }}
+    </mat-card-content>
+    <mat-card-content>
+      <mat-list>
+        Ingredients:
+        <mat-list-item *ngFor="let ing of cocktail.ingredients">{{ ing.title }}&nbsp; <b>{{ ing.amount }}</b></mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>
