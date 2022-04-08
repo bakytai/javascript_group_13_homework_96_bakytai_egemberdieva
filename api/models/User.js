@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
 const { nanoid } = require('nanoid');
+const bcrypt = require("bcrypt");
 
 const Schema = mongoose.Schema;
 
