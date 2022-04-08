@@ -6,9 +6,24 @@ const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
     facebookId: String,
-    avatar: {
-        type: String
+    email: {
+        type: String,
+        required: true,
+        unique: true,
+        validate: {
+            validator: async function (value) {
+                if (!this.isModified('email')) return true;
+                const user = await User.findOne({email: value});
+                return !user;
+            },
+            message: 'This user is already registered'
+        }
     },
+    password: {
+        type: String,
+        required: true,
+    },
+    avatar: String,
     displayName: {
         type: String,
         required: true

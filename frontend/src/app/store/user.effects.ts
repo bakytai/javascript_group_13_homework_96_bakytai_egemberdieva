@@ -13,7 +13,6 @@ import {
 } from './user.actions';
 import { mergeMap, tap } from 'rxjs';
 import { map } from 'rxjs/operators';
-
 import { SocialAuthService } from 'angularx-social-login';
 import { HelpersService } from '../services/helpers.service';
 

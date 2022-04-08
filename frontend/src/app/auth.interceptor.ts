@@ -12,11 +12,13 @@ import { User } from './models /user.model';
 export class AuthInterceptor implements HttpInterceptor {
   user: Observable<null | User>;
   token: null | string = null;
+  role!: string;
 
   constructor(private store: Store<AppState>, private helpers: HelpersService, private router: Router) {
     this.user = this.store.select(state => state.users.user);
     this.user.subscribe(user => {
       this.token = user ? user.token : null;
+      this.role = user ? user.role : 'anonymous';
     });
   }
 
@@ -24,6 +26,12 @@ export class AuthInterceptor implements HttpInterceptor {
     if (this.token) {
       request = request.clone({
         setHeaders: {'Authorization': this.token}
+      });
+    }
+
+    if (this.role) {
+      request = request.clone({
+        headers: request.headers.set('Role', this.role)
       });
     }
 

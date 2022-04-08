@@ -8,9 +8,9 @@
       <div>
         <a routerLink="/" style="color: white;">Cocktail Recipes</a>
       </div>
-      <nav fxLayout="row" fxLayoutAlign="space-between">
+      <nav fxLayout="row" fxLayoutAlign="space-between" *appUserType="'user' else anonMenu">
         <div >
-          <a mat-button routerLink="/new/artist">Add new recipe of cocktail</a>
+          <a mat-button routerLink="/new/recipe">Add new recipe of cocktail</a>
         </div>
         <button mat-icon-button [matMenuTriggerFor]="menu">
           <mat-icon>account_circle</mat-icon>
@@ -18,7 +18,7 @@
         <mat-menu #menu="matMenu">
           <button mat-menu-item disabled></button>
           <button mat-menu-item (click)="logout()">Logout</button>
-          <button mat-menu-item routerLink="/trackHistory">My cocktails</button>
+          <button mat-menu-item routerLink="/myCocktails">My cocktails</button>
         </mat-menu>
       </nav>
     </mat-toolbar>
@@ -29,5 +29,7 @@
 </mat-sidenav-container>
 
 <ng-template #anonMenu>
-  <a mat-button routerLink="/login">SIGN IN</a>
+  <nav>
+    <a mat-button routerLink="/login">SIGN IN</a>
+  </nav>
 </ng-template>

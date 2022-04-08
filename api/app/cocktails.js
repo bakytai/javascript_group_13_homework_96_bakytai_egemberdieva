@@ -25,8 +25,8 @@ router.get("/", async (req, res, next) => {
         let cocktails;
         const role = req.get('role');
 
-        if (role === 'anon' || role === 'user') {
-            cocktails = await Cocktail.find({is_publish: true});
+        if (role === 'anonymous' || role === 'user') {
+            cocktails = await Cocktail.find({is_published: true});
         }
 
         if (role === 'admin') {

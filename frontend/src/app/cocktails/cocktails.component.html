@@ -1,24 +1,23 @@
-<!--<div class="main-page">-->
-<!--  <h1 style="text-align: center">Cocktail menu!</h1>-->
+<div class="main-page">
+  <h1 style="text-align: center">Cocktail menu!</h1>
 
-<!--  <div fxLayout="row" style="padding: 20px">-->
-<!--    <div *ngFor="let artist of artists | async" [routerLink]="['/artist/',artist.id]">-->
-<!--      <mat-card *appHasRoles="{role: ['admin', 'user'], published: artist.is_published}" class="example-card" style="width: 14rem; margin: 5px">-->
-<!--        <mat-card-header>-->
-<!--          <div *appHasRoles="{role: ['admin', 'user'], published: artist.is_published}">-->
-<!--            <mat-card-subtitle *ngIf="!artist.is_published">Unpublished</mat-card-subtitle>-->
-<!--          </div>-->
-<!--          <mat-card-title>{{ artist.name }}</mat-card-title>-->
-<!--        </mat-card-header>-->
-<!--        <img mat-card-xl-image [src]="artist.image | image" [alt]="'Photo of ' + artist.name">-->
-<!--        <div >-->
-<!--          <button *appHasRoles="{role: ['admin'], published: artist.is_published}"-->
-<!--                  mat-raised-button (click)="delete(artist.id)">Delete</button>-->
-<!--          <div *ngIf="!artist.is_published">-->
-<!--            <button mat-raised-button (click)="publish(artist.id)">Publish</button>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </mat-card>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
+  <div fxLayout="row" style="padding: 20px">
+    <div *ngFor="let cocktail of cocktails | async">
+      <mat-card class="example-card" style="width: 14rem; margin: 5px">
+        <mat-card-header>
+          <div *appHasRoles="['admin']">
+            <mat-card-subtitle *ngIf="!cocktail.is_published">Unpublished</mat-card-subtitle>
+          </div>
+          <mat-card-title>{{ cocktail.title }}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-xl-image [src]="cocktail.image | image" [alt]="'Photo of ' + cocktail.title">
+        <div *appHasRoles="['admin']">
+          <button mat-raised-button (click)="delete(cocktail.id)">Delete</button>
+          <div *ngIf="!cocktail.is_published">
+            <button mat-raised-button (click)="publish(cocktail.id)">Publish</button>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>
