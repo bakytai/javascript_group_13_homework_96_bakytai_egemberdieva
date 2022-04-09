@@ -12,7 +12,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatMenuModule } from '@angular/material/menu';
 import { LoginComponent } from './login/login.component';
 import { MatCardModule } from '@angular/material/card';
@@ -31,6 +31,7 @@ import { environment } from '../environments/environment';
 import { UserTypeDirective } from './directives/user-type.directive';
 import { HasRolesDirective } from './directives/has-roles.directive';
 import { ImagePipe } from './pipe/image.pipe';
+import { FileInputComponent } from './file-input/file-input.component';
 
 const socialConfig: SocialAuthServiceConfig = {
   autoLogin: false,
@@ -55,7 +56,8 @@ const socialConfig: SocialAuthServiceConfig = {
     NewRecipeComponent,
     UserTypeDirective,
     HasRolesDirective,
-    ImagePipe
+    ImagePipe,
+    FileInputComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +78,8 @@ const socialConfig: SocialAuthServiceConfig = {
     FlexLayoutModule,
     MatSnackBarModule,
     SocialLoginModule,
-    AppStoreModule
+    AppStoreModule,
+    ReactiveFormsModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

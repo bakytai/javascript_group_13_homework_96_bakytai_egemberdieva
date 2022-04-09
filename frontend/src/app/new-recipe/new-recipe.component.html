@@ -1,1 +1,51 @@
-<p>new-recipe works!</p>
+<div fxLayout="row" fxLayoutAlign="center">
+  <form [formGroup]="cocktailForm" class="centered-card">
+    <div>
+      <label for="title">Cocktail name: </label>
+      <input
+        type="text"
+        formControlName="title"
+        id="title"
+        class="form-control"
+      >
+      <small
+        *ngIf="formHasError('title', 'required')"
+        class="form-text invalid-form-text">
+        Enter cocktail name!
+      </small>
+    </div>
+    <div class="form-group">
+      <label for="recipe">Recipe: </label>
+      <textarea
+        type="text"
+        formControlName="recipe"
+        id="recipe"
+        class="form-control"
+      ></textarea>
+      <small
+        *ngIf="formHasError('recipe', 'required')"
+        class="form-text invalid-form-text">
+        Enter recipe!
+      </small>
+    </div>
+      <div class="form-group">
+          <label>Cocktail image: </label><app-file-input></app-file-input>
+      </div>
+    <div class="form-group" formArrayName="ingredients">
+      <label for="titleI">Ingredients: </label>
+      <button type="button" class="btn btn-outline-info" (click)="addIngredient()">Add ingredient</button>
+
+      <div *ngFor="let ingredientControl of getIngredientsControls(); let i = index">
+        <div [formGroupName]="i">
+          <textarea formControlName="titleI" id="titleI" class="form-control"></textarea>
+          <label for="amount">Amount</label>
+          <input type="text" formControlName="amount" id="amount" class="form-control">
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <button type="submit" mat-raised-button [disabled]="cocktailForm.invalid">Create</button>
+      <button mat-raised-button (click)="resetForm()">Reset</button>
+    </div>
+  </form>
+</div>
